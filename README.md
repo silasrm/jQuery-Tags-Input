@@ -11,7 +11,7 @@ list of tags!
 
 [View Demo](http://xoxco.com/projects/code/tagsinput/)
 
-[Test it yourself using this jsFiddle Demo](http://jsfiddle.net/7aDak/)
+[Test it yourself using this jsFiddle Demo](http://jsfiddle.net/silasrm/vxoeLnLf/6/)
 
 Created by [XOXCO](http://xoxco.com)
 
