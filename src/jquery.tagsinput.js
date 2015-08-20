@@ -1,6 +1,6 @@
 /*
 
-    jQuery Tags Input Plugin 1.3.3.1
+    jQuery Tags Input Plugin 1.3.3.2
 
     Copyright (c) 2011 XOXCO, Inc
 
@@ -15,7 +15,9 @@
 
 (function($) {
     var delimiter = new Array();
+    var final_delimiter = new Array();
     var tags_callbacks = new Array();
+    
     $.fn.doAutosize = function(o) {
         var minWidth = $(this).data('minwidth'),
             maxWidth = $(this).data('maxwidth'),
@@ -186,6 +188,7 @@
             },
             hide: true,
             delimiter: ',',
+            final_delimiter: ',',
             unique: true,
             removeWithBackspace: true,
             placeholderColor: '#666666',
@@ -222,6 +225,7 @@
             }, settings);
 
             delimiter[id] = data.delimiter;
+            final_delimiter[id] = data.final_delimiter;
 
             if (settings.onAddTag || settings.onRemoveTag || settings.onChange) {
                 tags_callbacks[id] = new Array();
@@ -356,7 +360,7 @@
 
     $.fn.tagsInput.updateTagsField = function(obj, tagslist) {
         var id = $(obj).attr('id');
-        $(obj).val(tagslist.join(delimiter[id]));
+        $(obj).val(tagslist.join(final_delimiter[id]));
     };
 
     $.fn.tagsInput.importTags = function(obj, val) {
@@ -377,7 +381,7 @@
     };
 
     /**
-     * Convert val to array, spliting with all deliimiters
+     * Convert val to array, spliting with all delimiters
      * @param val
      * @param delimiter
      * @returns {array}
@@ -385,6 +389,7 @@
      */
     var _splitTags = function(val, delimiter) {
         var tags = [];
+
         if (typeof delimiter === 'string') {
             tags = val.split(delimiter);
         } else {
